@@ -1,0 +1,6 @@
+{
+  "name": "Swarojagar Training Center",
+  "description": "Swarojagar Training Center in Itahari, Sunsari is a CTEVT-affiliated, Government of Nepal-recognized vocational school offering certified programs in Refrigerator & AC Repair, Computer IT, Culinary Cook Training, Tailoring, and Industrial Electrical work.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
