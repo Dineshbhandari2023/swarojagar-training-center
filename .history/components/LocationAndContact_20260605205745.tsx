@@ -1,104 +1,64 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
-import { useApp } from "@/lib/context";
-import { translations } from "@/lib/translations";
-import { motion, AnimatePresence } from "motion/react";
-import {
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  Send,
-  CheckCircle2,
-  Navigation,
-} from "lucide-react";
+import React, { useState, useEffect } from 'react';
+import { useApp } from '@/lib/context';
+import { translations } from '@/lib/translations';
+import { motion, AnimatePresence } from 'motion/react';
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, Navigation } from 'lucide-react';
 
 export default function LocationAndContact() {
   const { language, selectedCourseId, setSelectedCourseId } = useApp();
   const t = translations[language];
 
   // Form State
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          phone,
-          program: selectedCourseId,
-          message,
-        }),
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        setSubmitted(true);
-        // Clear form
-        setName("");
-        setEmail("");
-        setPhone("");
-        setMessage("");
-        setSelectedCourseId("");
-      } else {
-        alert(result.error || "Failed to send message. Please try again.");
-      }
-    } catch (error) {
-      console.error("Form submission error:", error);
-      alert("An error occurred. Please try again.");
-    } finally {
+    // Simulate API delay
+    setTimeout(() => {
       setSubmitting(false);
-    }
+      setSubmitted(true);
+      // Clear form except course selection
+      setName('');
+      setEmail('');
+      setPhone('');
+      setMessage('');
+      setSelectedCourseId('');
+    }, 1200);
   };
 
   return (
-    <section
-      id="contact"
-      className="py-20 bg-slate-50 dark:bg-slate-900 transition-colors duration-300"
-    >
+    <section id="contact" className="py-20 bg-slate-50 dark:bg-slate-905 transition-colors duration-350">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2
-            id="contact-heading"
-            className="font-sans text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-4"
-          >
+          <h2 id="contact-heading" className="font-sans text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-4">
             {t.contact.title}
           </h2>
           <div className="w-16 h-1 bg-blue-900 dark:bg-blue-800 mx-auto rounded mb-5" />
-          <p
-            id="contact-lead"
-            className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed"
-          >
+          <p id="contact-lead" className="text-base sm:text-lg text-slate-600 dark:text-slate-350 leading-relaxed">
             {t.contact.subtitle}
           </p>
         </div>
 
         {/* 2-Column Contact Info + Form Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+          
           {/* Column 1: Info Cards and Maps (7 Cols) */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              
               {/* Address Card */}
-              <div
-                id="contact-info-address"
-                className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4"
-              >
+              <div id="contact-info-address" className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-205 dark:border-slate-850 shadow-sm flex items-start gap-4">
                 <div className="p-3 bg-blue-50 dark:bg-blue-950/30 rounded-xl text-blue-600 dark:text-blue-400 shrink-0">
                   <MapPin className="h-5 w-5" />
                 </div>
@@ -106,17 +66,14 @@ export default function LocationAndContact() {
                   <h4 className="font-sans font-bold text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                     {t.contact.addressLabel}
                   </h4>
-                  <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">
+                  <p className="text-sm font-semibold text-slate-850 dark:text-slate-200">
                     {t.contact.addressValue}
                   </p>
                 </div>
               </div>
 
               {/* Call Card */}
-              <div
-                id="contact-info-phone"
-                className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4"
-              >
+              <div id="contact-info-phone" className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-205 dark:border-slate-850 shadow-sm flex items-start gap-4">
                 <div className="p-3 bg-green-50 dark:bg-green-950/30 rounded-xl text-green-600 dark:text-green-400 shrink-0">
                   <Phone className="h-5 w-5" />
                 </div>
@@ -124,7 +81,7 @@ export default function LocationAndContact() {
                   <h4 className="font-sans font-bold text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                     {t.contact.phoneLabel}
                   </h4>
-                  <div className="space-y-1 font-sans font-bold text-sm text-slate-800 dark:text-slate-200">
+                  <div className="space-y-1 font-sans font-bold text-sm text-slate-850 dark:text-slate-200">
                     <p className="block">025-583511</p>
                     <p className="block">+977 986-2035584</p>
                     <p className="block">+977 9811090814</p>
@@ -133,36 +90,30 @@ export default function LocationAndContact() {
               </div>
 
               {/* Email Card */}
-              <div
-                id="contact-info-email"
-                className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4"
-              >
-                <div className="p-3 bg-sky-50 dark:bg-sky-950/30 rounded-xl text-sky-600 dark:text-sky-400 shrink-0">
+              <div id="contact-info-email" className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-205 dark:border-slate-850 shadow-sm flex items-start gap-4">
+                <div className="p-3 bg-sky-50 dark:bg-sky-950/30 rounded-xl text-sky-605 dark:text-sky-400 shrink-0">
                   <Mail className="h-5 w-5" />
                 </div>
                 <div className="overflow-hidden">
                   <h4 className="font-sans font-bold text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                     {t.contact.emailLabel}
                   </h4>
-                  <p className="text-sm font-semibold text-slate-800 dark:text-slate-200 truncate">
+                  <p className="text-sm font-semibold text-slate-850 dark:text-slate-200 truncate">
                     swarojagartrainingcenter@gmail.com
                   </p>
                 </div>
               </div>
 
               {/* Hours Card */}
-              <div
-                id="contact-info-hours"
-                className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4"
-              >
-                <div className="p-3 bg-purple-50 dark:bg-purple-950/30 rounded-xl text-purple-600 dark:text-purple-400 shrink-0">
+              <div id="contact-info-hours" className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-205 dark:border-slate-850 shadow-sm flex items-start gap-4">
+                <div className="p-3 bg-purple-50 dark:bg-purple-950/30 rounded-xl text-purple-605 dark:text-purple-400 shrink-0">
                   <Clock className="h-5 w-5" />
                 </div>
                 <div>
                   <h4 className="font-sans font-bold text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                     {t.contact.hoursLabel}
                   </h4>
-                  <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">
+                  <p className="text-sm font-semibold text-slate-855 dark:text-slate-200">
                     {t.contact.hoursValue}
                   </p>
                 </div>
@@ -170,7 +121,7 @@ export default function LocationAndContact() {
             </div>
 
             {/* Embedded Google Maps container with direction trigger */}
-            <div className="flex-1 bg-white dark:bg-slate-950 p-4 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-4">
+            <div className="flex-1 bg-white dark:bg-slate-950 p-4 rounded-3xl border border-slate-205 dark:border-slate-850 shadow-sm flex flex-col gap-4">
               <div className="relative w-full h-80 lg:h-full rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                 <iframe
                   id="google-maps-embed-frame"
@@ -182,7 +133,7 @@ export default function LocationAndContact() {
                   title="Swarojagar Training Center Map Location"
                 />
               </div>
-
+              
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-2">
                 <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">
                   📍 Itahari-06 Pragati Chowk, Sunsari (Koshi Province)
@@ -203,7 +154,7 @@ export default function LocationAndContact() {
 
           {/* Column 2: Booking Form (5 Cols) */}
           <div className="lg:col-span-5">
-            <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm h-full flex flex-col justify-center">
+            <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl border border-slate-205 dark:border-slate-850 shadow-sm h-full flex flex-col justify-center">
               <h3 className="font-sans font-extrabold text-2xl text-slate-900 dark:text-white mb-6">
                 {t.contact.formTitle}
               </h3>
@@ -228,17 +179,11 @@ export default function LocationAndContact() {
                       onClick={() => setSubmitted(false)}
                       className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline pt-4 block mx-auto"
                     >
-                      {language === "en"
-                        ? "Send another inquiry"
-                        : "अर्को आवेदन पठाउनुहोस्"}
+                      {language === 'en' ? 'Send another inquiry' : 'अर्को आवेदन पठाउनुहोस्'}
                     </button>
                   </motion.div>
                 ) : (
-                  <form
-                    id="enrollment-callback-form"
-                    onSubmit={handleSubmit}
-                    className="space-y-5"
-                  >
+                  <form id="enrollment-callback-form" onSubmit={handleSubmit} className="space-y-5">
                     {/* Full Name */}
                     <div>
                       <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">
@@ -251,7 +196,7 @@ export default function LocationAndContact() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="John Doe"
-                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-800 dark:text-slate-100 transition-colors"
+                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-850 dark:text-slate-100 transition-colors"
                       />
                     </div>
 
@@ -266,7 +211,7 @@ export default function LocationAndContact() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="john@example.com"
-                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-800 dark:text-slate-100 transition-colors"
+                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-855 dark:text-slate-100 transition-colors"
                       />
                     </div>
 
@@ -282,7 +227,7 @@ export default function LocationAndContact() {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+977 98XXXXXXX"
-                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-800 dark:text-slate-100 transition-colors"
+                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-855 dark:text-slate-100 transition-colors"
                       />
                     </div>
 
@@ -296,13 +241,8 @@ export default function LocationAndContact() {
                         required
                         value={selectedCourseId}
                         onChange={(e) => setSelectedCourseId(e.target.value)}
-                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-800 dark:text-slate-100 transition-colors appearance-none"
-                        style={{
-                          backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-chevron-down'><path d='m6 9 6 6 6-6'/></svg>")`,
-                          backgroundPosition: "right 1rem center",
-                          backgroundSize: "1.25rem",
-                          backgroundRepeat: "no-repeat",
-                        }}
+                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-205 dark:border-slate-801 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-850 dark:text-slate-100 transition-colors appearance-none"
+                        style={{ backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-chevron-down'><path d='m6 9 6 6 6-6'/></svg>")`, backgroundPosition: 'right 1rem center', backgroundSize: '1.25rem', backgroundRepeat: 'no-repeat' }}
                       >
                         <option value="" disabled className="text-slate-400">
                           -- Select Course --
@@ -326,7 +266,7 @@ export default function LocationAndContact() {
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder="Ask about hostel booking, next batch starting dates, etc..."
-                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-800 dark:text-slate-100 transition-colors"
+                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-855 dark:text-slate-100 transition-colors"
                       />
                     </div>
 
@@ -351,7 +291,9 @@ export default function LocationAndContact() {
               </AnimatePresence>
             </div>
           </div>
+
         </div>
+
       </div>
     </section>
   );

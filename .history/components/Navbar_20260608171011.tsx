@@ -16,10 +16,6 @@ import {
   Scissors,
   Utensils,
   Zap,
-  Hotel,
-  ThumbsUp,
-  BookOpen,
-  Users,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -32,47 +28,14 @@ const courseIcons: Record<string, React.ReactNode> = {
   wiring: <Zap className="h-4 w-4 text-yellow-500" />,
 };
 
-const facilityIcons: Record<string, React.ReactNode> = {
-  hostel: <Hotel className="h-4 w-4 text-purple-500" />,
-  skill: <ThumbsUp className="h-4 w-4 text-green-500" />,
-  ctevt: <BookOpen className="h-4 w-4 text-blue-500" />,
-  trainer: <Users className="h-4 w-4 text-amber-500" />,
-};
-
-const facilities = [
-  {
-    id: "hostel",
-    title: "Hostel Accommodations",
-    duration: "Clean & Budget-Friendly",
-  },
-  {
-    id: "skill",
-    title: "Guaranteed Skill Learning",
-    duration: "100% Practical Training",
-  },
-  {
-    id: "ctevt",
-    title: "CTEVT Standard Integration",
-    duration: "Government Recognized",
-  },
-  {
-    id: "trainer",
-    title: "Industry Expert Trainers",
-    duration: "10+ Years Experience",
-  },
-];
-
 export default function Navbar() {
   const { theme, toggleTheme, language, setLanguage } = useApp();
   const t = translations[language];
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [programsDropdownOpen, setProgramsDropdownOpen] = useState(false);
-  const [facilitiesDropdownOpen, setFacilitiesDropdownOpen] = useState(false);
   const [mobileProgramsOpen, setMobileProgramsOpen] = useState(false);
-  const [mobileFacilitiesOpen, setMobileFacilitiesOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const facilitiesDropdownRef = useRef<HTMLDivElement>(null);
 
   // Helper to determine if we're on the homepage
   const isHomePage = pathname === "/";
@@ -84,7 +47,7 @@ export default function Navbar() {
     return isHomePage ? `#${section}` : `/${section ? `#${section}` : ""}`;
   };
 
-  // Close dropdowns when clicking outside
+  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
@@ -92,12 +55,6 @@ export default function Navbar() {
         !dropdownRef.current.contains(e.target as Node)
       ) {
         setProgramsDropdownOpen(false);
-      }
-      if (
-        facilitiesDropdownRef.current &&
-        !facilitiesDropdownRef.current.contains(e.target as Node)
-      ) {
-        setFacilitiesDropdownOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -111,9 +68,9 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className=" fixed top-0 z-50 w-full backdrop-blur-md bg-white/85 dark:bg-slate-900/85 border-b border-slate-200/50 dark:border-slate-800/50 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-6">
-        <div className="flex items-center justify-between h-[65px]">
+    <nav className=" fixed top-0 z-50 w-full backdrop-blur-md bg-white dark:bg-slate-900/85 border-b border-slate-200/50 dark:border-slate-800/50 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-5">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link
             id="nav-logo"
@@ -139,7 +96,7 @@ export default function Navbar() {
             <Link
               id="nav-link-home"
               href={getNavHref("")}
-              className="font-sans text-sm font-semibold text-slate-600 hover:text-blue-900 dark:text-slate-400 dark:hover:text-blue-400 transition-colors duration-200"
+              className="font-sans text-sm font-semibold text-slate-600 hover:text-blue-900 dark:text-slate-350 dark:hover:text-blue-400 transition-colors duration-200"
             >
               {t.nav.home}
             </Link>
@@ -150,7 +107,7 @@ export default function Navbar() {
                 id="nav-programs-dropdown-trigger"
                 onClick={() => setProgramsDropdownOpen(!programsDropdownOpen)}
                 onMouseEnter={() => setProgramsDropdownOpen(true)}
-                className="flex items-center gap-1 font-sans text-sm font-semibold text-slate-600 hover:text-blue-900 dark:text-slate-400 dark:hover:text-blue-400 transition-colors duration-200"
+                className="flex items-center gap-1 font-sans text-sm font-semibold text-slate-600 hover:text-blue-900 dark:text-slate-350 dark:hover:text-blue-400 transition-colors duration-200"
               >
                 {t.nav.programs}
                 <ChevronDown
@@ -213,82 +170,20 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* Facilities Dropdown */}
-            <div className="relative" ref={facilitiesDropdownRef}>
-              <button
-                id="nav-facilities-dropdown-trigger"
-                onClick={() =>
-                  setFacilitiesDropdownOpen(!facilitiesDropdownOpen)
-                }
-                onMouseEnter={() => setFacilitiesDropdownOpen(true)}
-                className="flex items-center gap-1 font-sans text-sm font-semibold text-slate-600 hover:text-blue-900 dark:text-slate-400 dark:hover:text-blue-400 transition-colors duration-200"
-              >
-                {t.nav.facilities}
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-200 ${facilitiesDropdownOpen ? "rotate-180" : ""}`}
-                />
-              </button>
-
-              {/* Dropdown Panel */}
-              {facilitiesDropdownOpen && (
-                <div
-                  onMouseLeave={() => setFacilitiesDropdownOpen(false)}
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-80 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-xl overflow-hidden z-50"
-                >
-                  {/* Dropdown Header */}
-                  <div className="px-4 py-3 bg-indigo-900 dark:bg-indigo-950">
-                    <p className="text-[10px] font-bold text-indigo-200 tracking-widest uppercase">
-                      {t.nav.facilities}
-                    </p>
-                    <p className="text-xs text-indigo-100 mt-0.5">
-                      World-Class Infrastructure
-                    </p>
-                  </div>
-
-                  {/* Facility Links */}
-                  <div className="py-2">
-                    {facilities.map((facility) => (
-                      <Link
-                        key={facility.id}
-                        href="/facilities"
-                        id={`dropdown-facility-${facility.id}`}
-                        onClick={() => setFacilitiesDropdownOpen(false)}
-                        className="flex items-center gap-3 px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-150 group"
-                      >
-                        <div className="p-2 bg-slate-100 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700 rounded-lg transition-colors shrink-0">
-                          {facilityIcons[facility.id]}
-                        </div>
-                        <div className="min-w-0">
-                          <p className="text-sm font-semibold text-slate-800 dark:text-white leading-tight truncate">
-                            {facility.title}
-                          </p>
-                          <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
-                            {facility.duration}
-                          </p>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-
-                  {/* View All */}
-                  <div className="px-4 py-3 border-t border-slate-100 dark:border-slate-800">
-                    <Link
-                      href="/facilities"
-                      onClick={() => setFacilitiesDropdownOpen(false)}
-                      className="block text-center text-xs font-bold text-indigo-700 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300 transition-colors"
-                    >
-                      View All Facilities →
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
+            {/* Facilities */}
+            <Link
+              id="nav-link-facilities"
+              href={getNavHref("facilities")}
+              className="font-sans text-sm font-semibold text-slate-600 hover:text-blue-900 dark:text-slate-350 dark:hover:text-blue-400 transition-colors duration-200"
+            >
+              {t.nav.facilities}
+            </Link>
 
             {/* Contact */}
             <Link
               id="nav-link-contact"
               href={getNavHref("contact")}
-              className="font-sans text-sm font-semibold text-slate-600 hover:text-blue-900 dark:text-slate-400 dark:hover:text-blue-400 transition-colors duration-200"
+              className="font-sans text-sm font-semibold text-slate-600 hover:text-blue-900 dark:text-slate-350 dark:hover:text-blue-400 transition-colors duration-200"
             >
               {t.nav.contact}
             </Link>
@@ -331,7 +226,7 @@ export default function Navbar() {
             </div>
 
             {/* Theme Toggle */}
-            {/* <button
+            <button
               id="theme-toggler-btn"
               onClick={toggleTheme}
               className="p-2.5 rounded-lg border border-slate-200 dark:border-slate-850 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-350 transition-colors cursor-pointer"
@@ -342,7 +237,7 @@ export default function Navbar() {
               ) : (
                 <Moon className="h-4 w-4 text-slate-700" />
               )}
-            </button> */}
+            </button>
           </div>
 
           {/* Mobile Actions */}
@@ -350,11 +245,11 @@ export default function Navbar() {
             <button
               id="lang-mobile-toggle"
               onClick={() => setLanguage(language === "en" ? "np" : "en")}
-              className="px-2 py-1 text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded-md border border-slate-200 dark:border-slate-700"
+              className="px-2 py-1 text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-205 rounded-md border border-slate-200 dark:border-slate-700"
             >
               {language === "en" ? "नेपाली" : "English"}
             </button>
-            {/* <button
+            <button
               id="theme-mobile-toggle"
               onClick={toggleTheme}
               className="p-2 text-slate-600 dark:text-slate-350"
@@ -364,11 +259,11 @@ export default function Navbar() {
               ) : (
                 <Moon className="h-4 w-4" />
               )}
-            </button> */}
+            </button>
             <button
               id="mobile-menu-burger"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-slate-600 dark:text-slate-400"
+              className="p-2 text-slate-600 dark:text-slate-350"
             >
               {mobileMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -388,7 +283,7 @@ export default function Navbar() {
               id="mobile-nav-link-home"
               href={getNavHref("")}
               onClick={() => setMobileMenuOpen(false)}
-              className="font-sans text-base font-semibold text-slate-700 dark:text-slate-400 py-2.5 border-b border-slate-100 dark:border-slate-800"
+              className="font-sans text-base font-semibold text-slate-700 dark:text-slate-300 py-2.5 border-b border-slate-100 dark:border-slate-800"
             >
               {t.nav.home}
             </Link>
@@ -397,7 +292,7 @@ export default function Navbar() {
             <div className="border-b border-slate-100 dark:border-slate-800">
               <button
                 onClick={() => setMobileProgramsOpen(!mobileProgramsOpen)}
-                className="w-full flex items-center justify-between font-sans text-base font-semibold text-slate-700 dark:text-slate-400 py-2.5"
+                className="w-full flex items-center justify-between font-sans text-base font-semibold text-slate-700 dark:text-slate-300 py-2.5"
               >
                 {t.nav.programs}
                 <ChevronDown
@@ -418,7 +313,7 @@ export default function Navbar() {
                       className="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                     >
                       {courseIcons[course.id]}
-                      <span className="text-sm font-medium text-slate-700 dark:text-slate-400 leading-tight">
+                      <span className="text-sm font-medium text-slate-700 dark:text-slate-300 leading-tight">
                         {course.title}
                       </span>
                     </Link>
@@ -427,45 +322,20 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* Mobile Facilities Accordion */}
-            <div className="border-b border-slate-100 dark:border-slate-800">
-              <button
-                onClick={() => setMobileFacilitiesOpen(!mobileFacilitiesOpen)}
-                className="w-full flex items-center justify-between font-sans text-base font-semibold text-slate-700 dark:text-slate-400 py-2.5"
-              >
-                {t.nav.facilities}
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-200 ${mobileFacilitiesOpen ? "rotate-180" : ""}`}
-                />
-              </button>
-
-              {mobileFacilitiesOpen && (
-                <div className="pb-3 flex flex-col gap-1 pl-2">
-                  {facilities.map((facility) => (
-                    <Link
-                      key={facility.id}
-                      href="/facilities"
-                      onClick={() => {
-                        setMobileMenuOpen(false);
-                        setMobileFacilitiesOpen(false);
-                      }}
-                      className="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
-                    >
-                      {facilityIcons[facility.id]}
-                      <span className="text-sm font-medium text-slate-700 dark:text-slate-400 leading-tight">
-                        {facility.title}
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+            <Link
+              id="mobile-nav-link-facilities"
+              href={getNavHref("facilities")}
+              onClick={() => setMobileMenuOpen(false)}
+              className="font-sans text-base font-semibold text-slate-700 dark:text-slate-300 py-2.5 border-b border-slate-100 dark:border-slate-800"
+            >
+              {t.nav.facilities}
+            </Link>
 
             <Link
               id="mobile-nav-link-contact"
               href={getNavHref("contact")}
               onClick={() => setMobileMenuOpen(false)}
-              className="font-sans text-base font-semibold text-slate-700 dark:text-slate-400 py-2.5 border-b border-slate-100 dark:border-slate-800"
+              className="font-sans text-base font-semibold text-slate-700 dark:text-slate-300 py-2.5 border-b border-slate-100 dark:border-slate-800"
             >
               {t.nav.contact}
             </Link>

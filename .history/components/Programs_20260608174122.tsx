@@ -90,7 +90,7 @@ export default function Programs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex flex-col bg-white dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-blue-500/30 dark:hover:border-blue-500/20 transition-all duration-300 overflow-hidden"
+                className="flex flex-col bg-white dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-850 shadow-sm hover:shadow-md hover:border-blue-500/30 dark:hover:border-blue-500/20 transition-all duration-300 overflow-hidden"
               >
                 {/* Course Decorative Header Bar */}
                 <div
@@ -120,7 +120,7 @@ export default function Programs() {
                           {course.duration}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                      <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-450">
                         <Coins className="h-4 w-4 shrink-0 text-slate-400" />
                         <span>
                           <strong className="text-slate-700 dark:text-slate-300">

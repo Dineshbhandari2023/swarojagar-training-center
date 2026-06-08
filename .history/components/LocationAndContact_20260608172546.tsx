@@ -69,7 +69,7 @@ export default function LocationAndContact() {
   return (
     <section
       id="contact"
-      className="py-20 bg-slate-50 dark:bg-slate-900 transition-colors duration-300"
+      className="py-20 bg-slate-50 dark:bg-slate-905 transition-colors duration-350"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -83,7 +83,7 @@ export default function LocationAndContact() {
           <div className="w-16 h-1 bg-blue-900 dark:bg-blue-800 mx-auto rounded mb-5" />
           <p
             id="contact-lead"
-            className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed"
+            className="text-base sm:text-lg text-slate-600 dark:text-slate-350 leading-relaxed"
           >
             {t.contact.subtitle}
           </p>
@@ -97,7 +97,7 @@ export default function LocationAndContact() {
               {/* Address Card */}
               <div
                 id="contact-info-address"
-                className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4"
+                className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-205 dark:border-slate-850 shadow-sm flex items-start gap-4"
               >
                 <div className="p-3 bg-blue-50 dark:bg-blue-950/30 rounded-xl text-blue-600 dark:text-blue-400 shrink-0">
                   <MapPin className="h-5 w-5" />
@@ -106,7 +106,7 @@ export default function LocationAndContact() {
                   <h4 className="font-sans font-bold text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                     {t.contact.addressLabel}
                   </h4>
-                  <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">
+                  <p className="text-sm font-semibold text-slate-850 dark:text-slate-200">
                     {t.contact.addressValue}
                   </p>
                 </div>
@@ -115,7 +115,7 @@ export default function LocationAndContact() {
               {/* Call Card */}
               <div
                 id="contact-info-phone"
-                className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4"
+                className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-205 dark:border-slate-850 shadow-sm flex items-start gap-4"
               >
                 <div className="p-3 bg-green-50 dark:bg-green-950/30 rounded-xl text-green-600 dark:text-green-400 shrink-0">
                   <Phone className="h-5 w-5" />
@@ -124,7 +124,7 @@ export default function LocationAndContact() {
                   <h4 className="font-sans font-bold text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                     {t.contact.phoneLabel}
                   </h4>
-                  <div className="space-y-1 font-sans font-bold text-sm text-slate-800 dark:text-slate-200">
+                  <div className="space-y-1 font-sans font-bold text-sm text-slate-850 dark:text-slate-200">
                     <p className="block">025-583511</p>
                     <p className="block">+977 986-2035584</p>
                     <p className="block">+977 9811090814</p>
@@ -135,16 +135,16 @@ export default function LocationAndContact() {
               {/* Email Card */}
               <div
                 id="contact-info-email"
-                className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4"
+                className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-205 dark:border-slate-850 shadow-sm flex items-start gap-4"
               >
-                <div className="p-3 bg-sky-50 dark:bg-sky-950/30 rounded-xl text-sky-600 dark:text-sky-400 shrink-0">
+                <div className="p-3 bg-sky-50 dark:bg-sky-950/30 rounded-xl text-sky-605 dark:text-sky-400 shrink-0">
                   <Mail className="h-5 w-5" />
                 </div>
                 <div className="overflow-hidden">
                   <h4 className="font-sans font-bold text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                     {t.contact.emailLabel}
                   </h4>
-                  <p className="text-sm font-semibold text-slate-800 dark:text-slate-200 truncate">
+                  <p className="text-sm font-semibold text-slate-850 dark:text-slate-200 truncate">
                     swarojagartrainingcenter@gmail.com
                   </p>
                 </div>
@@ -153,16 +153,16 @@ export default function LocationAndContact() {
               {/* Hours Card */}
               <div
                 id="contact-info-hours"
-                className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4"
+                className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-205 dark:border-slate-850 shadow-sm flex items-start gap-4"
               >
-                <div className="p-3 bg-purple-50 dark:bg-purple-950/30 rounded-xl text-purple-600 dark:text-purple-400 shrink-0">
+                <div className="p-3 bg-purple-50 dark:bg-purple-950/30 rounded-xl text-purple-605 dark:text-purple-400 shrink-0">
                   <Clock className="h-5 w-5" />
                 </div>
                 <div>
                   <h4 className="font-sans font-bold text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                     {t.contact.hoursLabel}
                   </h4>
-                  <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">
+                  <p className="text-sm font-semibold text-slate-855 dark:text-slate-200">
                     {t.contact.hoursValue}
                   </p>
                 </div>
@@ -170,7 +170,7 @@ export default function LocationAndContact() {
             </div>
 
             {/* Embedded Google Maps container with direction trigger */}
-            <div className="flex-1 bg-white dark:bg-slate-950 p-4 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-4">
+            <div className="flex-1 bg-white dark:bg-slate-950 p-4 rounded-3xl border border-slate-205 dark:border-slate-850 shadow-sm flex flex-col gap-4">
               <div className="relative w-full h-80 lg:h-full rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                 <iframe
                   id="google-maps-embed-frame"
@@ -203,7 +203,7 @@ export default function LocationAndContact() {
 
           {/* Column 2: Booking Form (5 Cols) */}
           <div className="lg:col-span-5">
-            <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm h-full flex flex-col justify-center">
+            <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl border border-slate-205 dark:border-slate-850 shadow-sm h-full flex flex-col justify-center">
               <h3 className="font-sans font-extrabold text-2xl text-slate-900 dark:text-white mb-6">
                 {t.contact.formTitle}
               </h3>
@@ -251,7 +251,7 @@ export default function LocationAndContact() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="John Doe"
-                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-800 dark:text-slate-100 transition-colors"
+                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-850 dark:text-slate-100 transition-colors"
                       />
                     </div>
 
@@ -266,7 +266,7 @@ export default function LocationAndContact() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="john@example.com"
-                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-800 dark:text-slate-100 transition-colors"
+                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-855 dark:text-slate-100 transition-colors"
                       />
                     </div>
 
@@ -282,7 +282,7 @@ export default function LocationAndContact() {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+977 98XXXXXXX"
-                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-800 dark:text-slate-100 transition-colors"
+                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-855 dark:text-slate-100 transition-colors"
                       />
                     </div>
 
@@ -296,7 +296,7 @@ export default function LocationAndContact() {
                         required
                         value={selectedCourseId}
                         onChange={(e) => setSelectedCourseId(e.target.value)}
-                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-800 dark:text-slate-100 transition-colors appearance-none"
+                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-205 dark:border-slate-801 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-850 dark:text-slate-100 transition-colors appearance-none"
                         style={{
                           backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-chevron-down'><path d='m6 9 6 6 6-6'/></svg>")`,
                           backgroundPosition: "right 1rem center",
@@ -326,7 +326,7 @@ export default function LocationAndContact() {
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder="Ask about hostel booking, next batch starting dates, etc..."
-                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-800 dark:text-slate-100 transition-colors"
+                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-855 dark:text-slate-100 transition-colors"
                       />
                     </div>
 

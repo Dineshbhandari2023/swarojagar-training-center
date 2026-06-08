@@ -282,7 +282,7 @@ export default function LocationAndContact() {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+977 98XXXXXXX"
-                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-800 dark:text-slate-100 transition-colors"
+                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-600 text-slate-855 dark:text-slate-100 transition-colors"
                       />
                     </div>
 

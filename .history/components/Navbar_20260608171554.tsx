@@ -139,7 +139,7 @@ export default function Navbar() {
             <Link
               id="nav-link-home"
               href={getNavHref("")}
-              className="font-sans text-sm font-semibold text-slate-600 hover:text-blue-900 dark:text-slate-400 dark:hover:text-blue-400 transition-colors duration-200"
+              className="font-sans text-sm font-semibold text-slate-600 hover:text-blue-900 dark:text-slate-350 dark:hover:text-blue-400 transition-colors duration-200"
             >
               {t.nav.home}
             </Link>
@@ -150,7 +150,7 @@ export default function Navbar() {
                 id="nav-programs-dropdown-trigger"
                 onClick={() => setProgramsDropdownOpen(!programsDropdownOpen)}
                 onMouseEnter={() => setProgramsDropdownOpen(true)}
-                className="flex items-center gap-1 font-sans text-sm font-semibold text-slate-600 hover:text-blue-900 dark:text-slate-400 dark:hover:text-blue-400 transition-colors duration-200"
+                className="flex items-center gap-1 font-sans text-sm font-semibold text-slate-600 hover:text-blue-900 dark:text-slate-350 dark:hover:text-blue-400 transition-colors duration-200"
               >
                 {t.nav.programs}
                 <ChevronDown
@@ -221,7 +221,7 @@ export default function Navbar() {
                   setFacilitiesDropdownOpen(!facilitiesDropdownOpen)
                 }
                 onMouseEnter={() => setFacilitiesDropdownOpen(true)}
-                className="flex items-center gap-1 font-sans text-sm font-semibold text-slate-600 hover:text-blue-900 dark:text-slate-400 dark:hover:text-blue-400 transition-colors duration-200"
+                className="flex items-center gap-1 font-sans text-sm font-semibold text-slate-600 hover:text-blue-900 dark:text-slate-350 dark:hover:text-blue-400 transition-colors duration-200"
               >
                 {t.nav.facilities}
                 <ChevronDown
@@ -288,7 +288,7 @@ export default function Navbar() {
             <Link
               id="nav-link-contact"
               href={getNavHref("contact")}
-              className="font-sans text-sm font-semibold text-slate-600 hover:text-blue-900 dark:text-slate-400 dark:hover:text-blue-400 transition-colors duration-200"
+              className="font-sans text-sm font-semibold text-slate-600 hover:text-blue-900 dark:text-slate-350 dark:hover:text-blue-400 transition-colors duration-200"
             >
               {t.nav.contact}
             </Link>
@@ -331,7 +331,7 @@ export default function Navbar() {
             </div>
 
             {/* Theme Toggle */}
-            {/* <button
+            <button
               id="theme-toggler-btn"
               onClick={toggleTheme}
               className="p-2.5 rounded-lg border border-slate-200 dark:border-slate-850 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-350 transition-colors cursor-pointer"
@@ -342,7 +342,7 @@ export default function Navbar() {
               ) : (
                 <Moon className="h-4 w-4 text-slate-700" />
               )}
-            </button> */}
+            </button>
           </div>
 
           {/* Mobile Actions */}
@@ -350,11 +350,11 @@ export default function Navbar() {
             <button
               id="lang-mobile-toggle"
               onClick={() => setLanguage(language === "en" ? "np" : "en")}
-              className="px-2 py-1 text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded-md border border-slate-200 dark:border-slate-700"
+              className="px-2 py-1 text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-205 rounded-md border border-slate-200 dark:border-slate-700"
             >
               {language === "en" ? "नेपाली" : "English"}
             </button>
-            {/* <button
+            <button
               id="theme-mobile-toggle"
               onClick={toggleTheme}
               className="p-2 text-slate-600 dark:text-slate-350"
@@ -364,11 +364,11 @@ export default function Navbar() {
               ) : (
                 <Moon className="h-4 w-4" />
               )}
-            </button> */}
+            </button>
             <button
               id="mobile-menu-burger"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-slate-600 dark:text-slate-400"
+              className="p-2 text-slate-600 dark:text-slate-350"
             >
               {mobileMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -388,7 +388,7 @@ export default function Navbar() {
               id="mobile-nav-link-home"
               href={getNavHref("")}
               onClick={() => setMobileMenuOpen(false)}
-              className="font-sans text-base font-semibold text-slate-700 dark:text-slate-400 py-2.5 border-b border-slate-100 dark:border-slate-800"
+              className="font-sans text-base font-semibold text-slate-700 dark:text-slate-300 py-2.5 border-b border-slate-100 dark:border-slate-800"
             >
               {t.nav.home}
             </Link>
@@ -397,7 +397,7 @@ export default function Navbar() {
             <div className="border-b border-slate-100 dark:border-slate-800">
               <button
                 onClick={() => setMobileProgramsOpen(!mobileProgramsOpen)}
-                className="w-full flex items-center justify-between font-sans text-base font-semibold text-slate-700 dark:text-slate-400 py-2.5"
+                className="w-full flex items-center justify-between font-sans text-base font-semibold text-slate-700 dark:text-slate-300 py-2.5"
               >
                 {t.nav.programs}
                 <ChevronDown
@@ -418,7 +418,7 @@ export default function Navbar() {
                       className="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                     >
                       {courseIcons[course.id]}
-                      <span className="text-sm font-medium text-slate-700 dark:text-slate-400 leading-tight">
+                      <span className="text-sm font-medium text-slate-700 dark:text-slate-300 leading-tight">
                         {course.title}
                       </span>
                     </Link>
@@ -431,7 +431,7 @@ export default function Navbar() {
             <div className="border-b border-slate-100 dark:border-slate-800">
               <button
                 onClick={() => setMobileFacilitiesOpen(!mobileFacilitiesOpen)}
-                className="w-full flex items-center justify-between font-sans text-base font-semibold text-slate-700 dark:text-slate-400 py-2.5"
+                className="w-full flex items-center justify-between font-sans text-base font-semibold text-slate-700 dark:text-slate-300 py-2.5"
               >
                 {t.nav.facilities}
                 <ChevronDown
@@ -452,7 +452,7 @@ export default function Navbar() {
                       className="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                     >
                       {facilityIcons[facility.id]}
-                      <span className="text-sm font-medium text-slate-700 dark:text-slate-400 leading-tight">
+                      <span className="text-sm font-medium text-slate-700 dark:text-slate-300 leading-tight">
                         {facility.title}
                       </span>
                     </Link>
@@ -465,7 +465,7 @@ export default function Navbar() {
               id="mobile-nav-link-contact"
               href={getNavHref("contact")}
               onClick={() => setMobileMenuOpen(false)}
-              className="font-sans text-base font-semibold text-slate-700 dark:text-slate-400 py-2.5 border-b border-slate-100 dark:border-slate-800"
+              className="font-sans text-base font-semibold text-slate-700 dark:text-slate-300 py-2.5 border-b border-slate-100 dark:border-slate-800"
             >
               {t.nav.contact}
             </Link>

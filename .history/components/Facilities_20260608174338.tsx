@@ -58,7 +58,7 @@ export default function Facilities() {
           <div className="w-16 h-1 bg-blue-600 mx-auto rounded mb-5" />
           <p
             id="facilities-lead"
-            className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed"
+            className="text-base sm:text-lg text-slate-600 dark:text-slate-350 leading-relaxed"
           >
             {t.facilities.subtitle}
           </p>
